@@ -14,12 +14,12 @@ public class UserService implements IUserService {
     @Autowired
     private IUserDao userDao;
 
-    @Transactional
+//    @Transactional
     public void saveUser(User user) {
         userDao.saveUser(user);
     }
 
-    @Transactional
+//    @Transactional
     public List<User> getAllUsers() {
         return userDao.getAllUsers();
     }

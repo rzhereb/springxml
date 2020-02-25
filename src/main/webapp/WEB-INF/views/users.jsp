@@ -1,6 +1,7 @@
-<%@ page contentType="text/html; UTF-8" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core" %>
-<%@ taglib prefix="f" uri="http://www.springframework.org/tags/form" %>
+<%@ page contentType="text/html;charset=UTF-8" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <html>
 
@@ -10,23 +11,35 @@
 
 <body>
 
-<table>
-    <td>ID</td>
-    <td>Name</td>
-    <td>Age</td>
-
-    <c:forEach items="${users}" var="user">
+<table border="1">
+    <tr>
+        <td>ID</td>
+        <td>Name</td>
+        <td>Age</td>
+    </tr>
+    <c:forEach items="${userList}" var="employee">
         <tr>
-            <td>${user.id}</td>
-            <td>${user.name}</td>
-            <td>${user.age}</td>
+            <td>${employee.id}</td>
+            <td>${employee.name}</td>
+            <td>${employee.age}</td>
         </tr>
     </c:forEach>
 </table>
 
-<f:form method="post" modelAttribute="user">
-    <f:input path="name"/>
-    <f:input path="age"/>
-</f:form>
+<form:form method="post" modelAttribute="user">
+    <table>
+        <tr>
+            <td><spring:message text="Name"/></td>
+            <td><form:input path="name"/></td>
+        </tr>
+        <tr>
+            <td><spring:message text="Age"/></td>
+            <td><form:input path="age"/></td>
+        </tr>
+        <tr>
+            <td colspan="3"><input type="submit" value="Add User"/></td>
+        </tr>
+    </table>
+</form:form>
 </body>
 </html>

@@ -20,12 +20,13 @@ public class UserController {
     @RequestMapping(value = "/users")
     public String users(Model model) {
         List<User> allUsers = userService.getAllUsers();
-        model.addAttribute("users", allUsers);
+        model.addAttribute("userList", allUsers);
+        model.addAttribute("user", new User());
         return "users";
     }
 
     @RequestMapping(value = "/users", method = RequestMethod.POST)
-    public String addUser(@ModelAttribute User user) {
+    public String addUser(@ModelAttribute("user") User user) {
         userService.saveUser(user);
         return "redirect:/users";
     }

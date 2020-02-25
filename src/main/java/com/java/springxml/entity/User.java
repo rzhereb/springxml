@@ -13,7 +13,7 @@ public class User {
     private String name;
     private int age;
 
-    User() {}
+    public User() {}
 
     public User(String name, int age) {
         this.name = name;
